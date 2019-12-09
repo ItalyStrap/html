@@ -36,7 +36,8 @@
     "scripts": {
         "check": [
             ".\\vendor\\bin\\phpcs -p --standard=PHPCompatibility src",
-            ".\\vendor\\bin\\phpcs -p --standard=WordPress src"
+            ".\\vendor\\bin\\phpcs -p --standard=WordPress src",
+            ".\\vendor\\bin\\phpcs -p --standard=PSR2 src"
         ],
         "test": [
             "test"

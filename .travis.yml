@@ -109,3 +109,5 @@ script:
   - codecept run unit
 #  - codecept run wpunit && codecept run unit
   - phpstan analyse
+  - phpcs -p --standard=PHPCompatibility src
+  - phpcs -p --standard=PSR1 src
