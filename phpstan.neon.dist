@@ -11,7 +11,7 @@ parameters:
     paths:
         - %currentWorkingDirectory%/src/
     excludes_analyse:
-        - %currentWorkingDirectory%/src/Config/
+        #- %currentWorkingDirectory%/src/Config/
     autoload_files:
         # Procedural code
         - %currentWorkingDirectory%/functions/helpers.php

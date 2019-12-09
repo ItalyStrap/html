@@ -108,3 +108,4 @@ script:
 #  - codecept run integration
   - codecept run unit
 #  - codecept run wpunit && codecept run unit
+  - phpstan analyse
