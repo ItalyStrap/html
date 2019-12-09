@@ -85,7 +85,7 @@ echo $sut->void( 'some_other_context', 'input', [ 'type' => 'text' ] );
 
 ## Advanced Usage
 
-See in `tests/` folder for more advance usage.
+See in [tests](tests) folder for more advance usage.
 
 ## Contributing
 
