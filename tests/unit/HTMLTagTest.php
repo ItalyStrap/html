@@ -135,5 +135,5 @@ class HTMLTagTest extends \Codeception\Test\Unit
 
 		$void = $sut->void( 'form', 'input' );
 		$this->assertStringContainsString( '<!-- open in context: form --><input/>', $void, '' );
-    }
+	}
 }

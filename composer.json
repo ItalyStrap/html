@@ -30,7 +30,7 @@
             "functions/helpers.php"
         ],
         "psr-4": {
-            "ItalyStrap\\HTML\\": "src/"
+            "ItalyStrap\\HTML\\": "src/HTML"
         }
     },
     "scripts": {
