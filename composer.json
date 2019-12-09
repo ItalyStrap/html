@@ -35,11 +35,10 @@
     },
     "scripts": {
         "check": [
-            ".\\vendor\\bin\\phpcs -p --standard=PHPCompatibility src",
-            ".\\vendor\\bin\\phpcs -p --standard=WordPress src"
+            "phpcs -p --standard=WordPress,PHPCompatibility src"
         ],
         "test": [
-            "test"
+            "test.bat"
         ]
     }
 }
