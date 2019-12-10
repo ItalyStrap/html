@@ -70,7 +70,8 @@ class Attributes implements AttributesInterface
 		 *
 		 * @var string
 		 */
-		$html = \apply_filters( "italystrap_attr_{$context}_output",
+		$html = \apply_filters(
+			"italystrap_attr_{$context}_output",
 			$this->generateValidHtml( $attr ),
 			$attr,
 			$context,
@@ -101,10 +102,10 @@ class Attributes implements AttributesInterface
 			}
 
 			return $html . \sprintf(
-					' %s="%s"',
-					esc_html( $key ),
-					('href' === $key) ? \esc_url( $attr[ $key ] ) : \esc_attr( $attr[ $key ] )
-				);
+				' %s="%s"',
+				esc_html( $key ),
+				('href' === $key) ? \esc_url( $attr[ $key ] ) : \esc_attr( $attr[ $key ] )
+			);
 		}, '' );
 	}
 }

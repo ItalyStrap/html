@@ -103,9 +103,7 @@ before_script:
   - codecept build
 
 script:
-#  - codecept run acceptance
-#  - codecept run functional
-#  - codecept run integration
+  - composer check
   - codecept run unit
 #  - codecept run wpunit && codecept run unit
   - phpstan analyse
