@@ -65,6 +65,39 @@ $attr = get_attr( 'context', ['class' => 'someClass'] );
 // Echo ' class="someClass"'
 get_attr_e( 'context', ['class' => 'someClass'] );
 ```
+
+### `ItalyStrap\HTML\get_attr()`
+
+Build list of attributes into a string and apply contextual filter on string:
+
+```php
+use function ItalyStrap\HTML\{get_attr, get_attr_e};
+
+$attr = [
+	'id'	=> 'unique_id',
+	'class'	=> 'some_class',
+];
+
+$output = get_attr( $context, $attr, false );
+
+// id="unique_id" class="some_class"
+
+printf(
+	'<span%s>Title</span>',
+	$output
+);
+```
+
+or
+
+```html
+<span<?php get_attr_e( $context, $attr, true ) ?>>Title</span>
+```
+
+```php
+// <span id="unique_id" class="some_class">Title</span>
+```
+
 ```php
 use function ItalyStrap\HTML\{open_tag, close_tag, open_tag_e, close_tag_e};
 
@@ -101,6 +134,27 @@ echo $sut->close( 'some_context' );
 echo $sut->void( 'some_other_context', 'input', [ 'type' => 'text' ] );
 ```
 
+### Filters
+
+```php
+use ItalyStrap\HTML\{Tag,Attributes};
+
+$context = 'some_context';
+
+\add_filter("italystrap_{$context}_tag", function( string $tag, string $context, Tag $obj) {
+    // Do some staff with $tag
+    $new_tag = 'span';
+    return $new_tag;
+}, 10, 3);
+
+$sut = new Tag( new Attributes() );
+echo $sut->open( 'some_context', 'div', [ 'class' => 'someClass' ] );
+echo 'Some content inside HTML div tags';
+echo $sut->close( 'some_context' );
+
+// <span class="someClass">Some content inside HTML div tags</span>
+```
+
 ## Advanced Usage
 
 See in [tests](tests) folder for more advance usage.
@@ -114,6 +168,10 @@ All feedback / bug reports / pull requests are welcome.
 Copyright (c) 2019 Enea Overclokk, ItalyStrap
 
 This code is licensed under the [MIT](LICENSE).
+
+## Notes
+
+*  Maintained under the [Semantic Versioning Guide](http://semver.org)
 
 ## Credits
 
