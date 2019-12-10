@@ -10,8 +10,9 @@ parameters:
     inferPrivatePropertyTypeFromConstructor: true
     paths:
         - %currentWorkingDirectory%/src/
+        - %currentWorkingDirectory%/functions/helpers.php
     excludes_analyse:
-        - %currentWorkingDirectory%/src/Config/
+        #- %currentWorkingDirectory%/src/Config/
     autoload_files:
         # Procedural code
         - %currentWorkingDirectory%/functions/helpers.php

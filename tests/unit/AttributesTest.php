@@ -88,7 +88,7 @@ class AttributesTest extends \Codeception\Test\Unit
 		] );
 
 		$attr = $sut->render( 'test' );
-		$this->assertStringContainsString( 'class="color-primary" id="unique_id"', $attr, '' );
+		$this->assertStringContainsString( ' class="color-primary" id="unique_id"', $attr, '' );
 	}
 
 	/**

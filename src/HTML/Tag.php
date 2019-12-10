@@ -69,8 +69,8 @@ class Tag implements TagInterface {
 			$self_close
 		);
 
-		if ( $this->is_debug() ) {
-			return $this->add_comment_in_debug_mode( __FUNCTION__, $context, $output );
+		if ( $this->isDebug() ) {
+			return $this->addCommentInDebugMode( __FUNCTION__, $context, $output );
 		}
 
 		return $output;
@@ -91,8 +91,8 @@ class Tag implements TagInterface {
 			esc_attr( $tag )
 		);
 
-		if ( $this->is_debug() ) {
-			$output = $this->add_comment_in_debug_mode( __FUNCTION__, $context, $output, 'post' );
+		if ( $this->isDebug() ) {
+			$output = $this->addCommentInDebugMode( __FUNCTION__, $context, $output, 'post' );
 		}
 
 		$this->removeTag( $context );
@@ -205,7 +205,7 @@ class Tag implements TagInterface {
 	 * @param string $preOrPost
 	 * @return string
 	 */
-	private function add_comment_in_debug_mode( string $func_name, string $context, string $html, string $preOrPost = 'pre' ) : string {
+	private function addCommentInDebugMode( string $func_name, string $context, string $html, string $preOrPost = 'pre' ) : string {
 
 		$format = [
 			'pre'	=> '<!-- %1$s in context: %2$s -->%3$s',
@@ -224,20 +224,20 @@ class Tag implements TagInterface {
 	/**
 	 * @return bool
 	 */
-	private function is_debug() : bool {
+	private function isDebug() : bool {
 		return self::$is_debug;
 	}
 
 	/**
 	 * @throws \Exception
 	 */
-	private function check_non_closed_tags() {
+	private function checkNonClosedTags() {
 
 		try {
 			if ( \count( $this->tags ) > 0 ) {
 				throw new \RuntimeException( \sprintf(
 					'You forgot to close this tags: { %s }',
-					\join( ' | ', $this->get_missed_close_tags() )
+					\join( ' | ', $this->getMissedCloseTags() )
 				) );
 			}
 		} catch ( \RuntimeException $e ) {
@@ -252,7 +252,7 @@ class Tag implements TagInterface {
 	/**
 	 * @return array
 	 */
-	private function get_missed_close_tags() : array {
+	private function getMissedCloseTags() : array {
 		$output = [];
 		foreach ( $this->tags as $context => $tag ) {
 			$output[] = sprintf(
@@ -269,6 +269,6 @@ class Tag implements TagInterface {
 	 * @throws \Exception
 	 */
 	public function __destruct() {
-		$this->check_non_closed_tags();
+		$this->checkNonClosedTags();
 	}
 }

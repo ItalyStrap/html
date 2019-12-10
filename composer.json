@@ -35,7 +35,7 @@
     },
     "scripts": {
         "check": [
-            "phpcs -p --standard=WordPress,PHPCompatibility src/",
+            "phpcs -p --standard=PSR2,WordPress,PHPCompatibility src/",
             "phpstan analyze"
         ],
         "test": [
