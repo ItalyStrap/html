@@ -27,10 +27,10 @@
     },
     "autoload": {
         "files": [
-            "functions/helpers.php"
+            "src/helpers.php"
         ],
         "psr-4": {
-            "ItalyStrap\\HTML\\": "src/HTML"
+            "ItalyStrap\\HTML\\": "src"
         }
     },
     "scripts": {

@@ -10,13 +10,13 @@ if ( ! function_exists( __NAMESPACE__ . '\get_attr' ) ) {
 	 *
 	 * The contextual filter is of the form `italystrap_attr_{context}_output`.
 	 *
-	 * @param  string $context    The context, to build filter name.
-	 * @param  array  $attr Optional. Extra attributes to merge with defaults.
-	 * @param  bool   $echo       True for echoing or false for returning the value.
+	 * @param string $context The context, to build filter name.
+	 * @param array $attr Optional. Extra attributes to merge with defaults.
+	 * @param bool $echo True for echoing or false for returning the value.
 	 *                            Default false.
-	 * @param  null   $args       Optional. Extra arguments in case is needed.
+	 * @param null $args Optional. Extra arguments in case is needed.
 	 *
-	 * @return string|void String of HTML attributes and values.
+	 * @return string String of HTML attributes and values.
 	 */
 	function get_attr( string $context, array $attr = [], $echo = false, $args = null ): string {
 
@@ -29,6 +29,7 @@ if ( ! function_exists( __NAMESPACE__ . '\get_attr' ) ) {
 		}
 
 		echo $obj->render( $context, $args );
+		return '';
 	}
 }
 if ( ! function_exists( __NAMESPACE__ . '\get_attr_e' ) ) {
