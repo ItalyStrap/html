@@ -24,12 +24,13 @@ if ( ! function_exists( __NAMESPACE__ . '\get_attr' ) ) {
 
 		$obj->add( $context, $attr );
 
-		if ( ! $echo ) {
-			return $obj->render( $context, $args );
+		if ( $echo ) {
+			_deprecated_argument( __FUNCTION__, '1.1.0', 'Use get_attr_e() for printing attributes' );
+			echo $obj->render( $context, $args );
+			return '';
 		}
 
-		echo $obj->render( $context, $args );
-		return '';
+		return $obj->render( $context, $args );
 	}
 }
 if ( ! function_exists( __NAMESPACE__ . '\get_attr_e' ) ) {
@@ -49,5 +50,88 @@ if ( ! function_exists( __NAMESPACE__ . '\get_attr_e' ) ) {
 	 */
 	function get_attr_e( string $context, array $attr = [], $args = null ) {
 		echo get_attr( $context, $attr, false, $args );
+	}
+}
+
+/**
+ * @return Tag
+ */
+if ( ! \function_exists( __NAMESPACE__ . '\tag' ) ) {
+	function tag(): Tag {
+
+		static $tag = null;
+
+		if ( ! $tag ) {
+			$tag = new Tag( new Attributes() );
+		}
+
+		return $tag;
+	}
+}
+
+/**
+ * @param string $context
+ * @param string $tag
+ * @param array $attr
+ * @param bool $is_void
+ * @return string
+ */
+if ( ! \function_exists( __NAMESPACE__ . '\open_tag' ) ) {
+	function open_tag( string $context, string $tag, array $attr = [] ) : string {
+		return tag()->open( ...\func_get_args() );
+	}
+}
+
+/**
+ * @param string $context
+ * @param string $tag
+ * @param array $attr
+ * @param bool $is_void
+ */
+if ( ! \function_exists( __NAMESPACE__ . '\open_tag_e' ) ) {
+	function open_tag_e( string $context, string $tag, array $attr = [] ) {
+		echo tag()->open( ...\func_get_args() );
+	}
+}
+
+/**
+ * @param string $context
+ * @return string
+ */
+if ( ! \function_exists( __NAMESPACE__ . '\close_tag' ) ) {
+	function close_tag( string $context ) : string {
+		return tag()->close( $context );
+	}
+}
+
+/**
+ * @param string $context
+ */
+if ( ! \function_exists( __NAMESPACE__ . '\close_tag_e' ) ) {
+	function close_tag_e( string $context ) {
+		echo tag()->close( $context );
+	}
+}
+
+/**
+ * @param string $context
+ * @param string $tag
+ * @param array $attr
+ * @return string
+ */
+if ( ! \function_exists( __NAMESPACE__ . '\void_tag' ) ) {
+	function void_tag( string $context, string $tag, array $attr = [] ) : string {
+		return tag()->void( ...\func_get_args() );
+	}
+}
+
+/**
+ * @param string $context
+ * @param string $tag
+ * @param array $attr
+ */
+if ( ! \function_exists( __NAMESPACE__ . '\void_tag_e' ) ) {
+	function void_tag_e( string $context, string $tag, array $attr = [] ) {
+		echo tag()->void( ...\func_get_args() );
 	}
 }
