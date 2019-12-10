@@ -7,8 +7,8 @@ namespace ItalyStrap\HTML;
  * Class Attributes
  * @package ItalyStrap\HTML
  */
-class Attributes implements AttributesInterface
-{
+class Attributes implements AttributesInterface {
+
 	/**
 	 * @var array
 	 */
@@ -20,21 +20,21 @@ class Attributes implements AttributesInterface
 	public function add( string $context, array $attr ): Attributes {
 		$this->attributes[ $context ] = $attr;
 		return $this;
- 	}
+	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function get( string $context ) {
 		return $this->attributes[ $context ];
- 	}
+	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function has( string $context ): bool {
 		return \array_key_exists( $context, $this->attributes );
- 	}
+	}
 
 	/**
 	 * @inheritDoc
@@ -42,7 +42,7 @@ class Attributes implements AttributesInterface
 	public function remove( string $context ) {
 		unset( $this->attributes[ $context ] );
 		return $this;
- 	}
+	}
 
 	/**
 	 * @inheritDoc
@@ -80,7 +80,7 @@ class Attributes implements AttributesInterface
 
 		$this->remove( $context );
 		return \strval( $html );
- 	}
+	}
 
 	/**
 	 * @param array $attr

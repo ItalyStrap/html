@@ -12,7 +12,8 @@
     <rule ref="PHPCompatibility"/>
     <config name="testVersion" value="7.2-"/>
 
-    <!-- https://gist.github.com/gsherwood/9d22f634c57f990a7c64-->
+    <!-- https://gist.github.com/gsherwood/9d22f634c57f990a7c64 -->
+    <!-- http://www.thisprogrammingthing.com/2015/creating-your-own-standard-in-phpcs/ -->
     <!-- Use PSR2 as a base.-->
     <rule ref="PSR2">
 

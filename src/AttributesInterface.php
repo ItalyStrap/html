@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace ItalyStrap\HTML;
 
-interface AttributesInterface
-{
+interface AttributesInterface {
+
 	/**
 	 * @param string $context
 	 * @param array $attr

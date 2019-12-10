@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace ItalyStrap\HTML;
 
-interface TagInterface
-{
+interface TagInterface {
+
 	/**
 	 * @param string $context
 	 * @param string $tag

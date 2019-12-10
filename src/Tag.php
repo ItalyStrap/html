@@ -41,9 +41,7 @@ class Tag implements TagInterface {
 	public function open( string $context, string $tag, array $attr = [], $is_void = false ): string {
 
 		try {
-
 			$this->setTag( $context, $tag );
-
 		} catch ( \RuntimeException $e ) {
 			echo $e->getMessage();
 		} catch ( \Exception $e ) {
@@ -70,7 +68,7 @@ class Tag implements TagInterface {
 		);
 
 		if ( $this->isDebug() ) {
-			return $this->addCommentInDebugMode( __FUNCTION__, $context, $output );
+			return $this->addComment( __FUNCTION__, $context, $output );
 		}
 
 		return $output;
@@ -92,7 +90,7 @@ class Tag implements TagInterface {
 		);
 
 		if ( $this->isDebug() ) {
-			$output = $this->addCommentInDebugMode( __FUNCTION__, $context, $output, 'post' );
+			$output = $this->addComment( __FUNCTION__, $context, $output, 'post' );
 		}
 
 		$this->removeTag( $context );
@@ -197,15 +195,15 @@ class Tag implements TagInterface {
 	}
 
 	/**
-	 * @todo Maybe make a both for selfclose
-	 *
-	 * @param string $func_name
+	 * @param string $name
 	 * @param string $context
 	 * @param string $html
 	 * @param string $preOrPost
 	 * @return string
+	 *@todo Maybe make a both for selfclose
+	 *
 	 */
-	private function addCommentInDebugMode( string $func_name, string $context, string $html, string $preOrPost = 'pre' ) : string {
+	private function addComment( string $name, string $context, string $html, string $preOrPost = 'pre' ) : string {
 
 		$format = [
 			'pre'	=> '<!-- %1$s in context: %2$s -->%3$s',
@@ -215,7 +213,7 @@ class Tag implements TagInterface {
 
 		return \sprintf(
 			$format[ $preOrPost ],
-			$func_name,
+			$name,
 			esc_attr( $context ),
 			$html
 		);
