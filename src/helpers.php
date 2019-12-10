@@ -135,3 +135,17 @@ if ( ! \function_exists( __NAMESPACE__ . '\void_tag_e' ) ) {
 		echo tag()->void( ...\func_get_args() );
 	}
 }
+
+if ( ! function_exists( 'ItalyStrap\HTML\is_HTML' ) ) {
+
+	/**
+	 * https://subinsb.com/php-check-if-string-is-html/
+	 *
+	 * @param  string $string
+	 *
+	 * @return bool
+	 */
+	function is_HTML( string $string ): bool {
+		return $string !== \strip_tags( $string );
+	}
+}

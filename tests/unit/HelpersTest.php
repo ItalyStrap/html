@@ -72,4 +72,12 @@ class HelpersTest extends \Codeception\Test\Unit
 
 		$this->expectOutputString( '<div class="btn-primary">Content</div>' );
     }
+
+	/**
+	 * @test
+	 */
+    public function ItShouldBeValidHtml()
+    {
+    	$this->assertTrue( \ItalyStrap\HTML\is_HTML( '<div>Content</div>' ), '' );
+    }
 }
