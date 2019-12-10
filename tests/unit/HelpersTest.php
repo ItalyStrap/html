@@ -51,7 +51,7 @@ class HelpersTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-    public function ItShouldRenderTagFromtHelpers()
+    public function ItShouldRenderTagFromHelpers()
     {
     	\ItalyStrap\HTML\Tag::$is_debug = false;
 		$open = \ItalyStrap\HTML\open_tag( 'test', 'div', [ 'class' => 'btn-primary' ] );
@@ -63,7 +63,7 @@ class HelpersTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-    public function ItShouldOutputTagFromtHelpers()
+    public function ItShouldOutputTagFromHelpers()
     {
     	\ItalyStrap\HTML\Tag::$is_debug = false;
 		\ItalyStrap\HTML\open_tag_e( 'test', 'div', [ 'class' => 'btn-primary' ] );
