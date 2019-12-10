@@ -65,6 +65,24 @@ $attr = get_attr( 'context', ['class' => 'someClass'] );
 // Echo ' class="someClass"'
 get_attr_e( 'context', ['class' => 'someClass'] );
 ```
+```php
+use function ItalyStrap\HTML\{open_tag, close_tag, open_tag_e, close_tag_e};
+
+\ItalyStrap\HTML\Tag::$is_debug = false; // If you don't want tu print debug comments
+$open = \ItalyStrap\HTML\open_tag( 'test', 'div', [ 'class' => 'btn-primary' ] );
+$this->assertStringContainsString( '<div class="btn-primary">', $open, '' );
+$closed = \ItalyStrap\HTML\close_tag( 'test' );
+$this->assertStringContainsString( '</div>', $closed, '' );
+
+
+\ItalyStrap\HTML\Tag::$is_debug = false;
+\ItalyStrap\HTML\open_tag_e( 'test', 'div', [ 'class' => 'btn-primary' ] );
+echo 'Content';
+\ItalyStrap\HTML\close_tag_e( 'test' );
+
+$this->expectOutputString( '<div class="btn-primary">Content</div>' );
+```
+
 
 ### Tag Class
 
