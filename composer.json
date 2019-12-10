@@ -35,12 +35,11 @@
     },
     "scripts": {
         "check": [
-            ".\\vendor\\bin\\phpcs -p --standard=PHPCompatibility src",
-            ".\\vendor\\bin\\phpcs -p --standard=WordPress src",
-            ".\\vendor\\bin\\phpcs -p --standard=PSR2 src"
+            "phpcs -p --standard=PSR2,WordPress,PHPCompatibility src/",
+            "phpstan analyze"
         ],
         "test": [
-            "test"
+            "test.bat"
         ]
     }
 }
