@@ -111,7 +111,19 @@ class AttributesTest extends \Codeception\Test\Unit
 	 */
 	public function ItShouldRemoveAttributeIfValueIsEmpty() {
 		$sut = $this->getInstance();
-		$sut->add( 'test', [
+		$sut->add( 'test-with-key-value-first', [
+
+			'id'	=> 'unique_id',
+			'class'	=> '',
+			'attr1'	=> null,
+			'attr2'	=> false,
+			'attr3'	=> 0,
+		] );
+
+		$attr = $sut->render( 'test-with-key-value-first' );
+		$this->assertEquals( ' id="unique_id"', $attr, '' );
+
+		$sut->add( 'test-with-key-null-first', [
 			'class'	=> '',
 			'attr1'	=> null,
 			'attr2'	=> false,
@@ -119,7 +131,7 @@ class AttributesTest extends \Codeception\Test\Unit
 			'id'	=> 'unique_id',
 		] );
 
-		$attr = $sut->render( 'test' );
+		$attr = $sut->render( 'test-with-key-null-first' );
 		$this->assertEquals( ' id="unique_id"', $attr, '' );
 	}
 

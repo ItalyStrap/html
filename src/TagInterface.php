@@ -5,6 +5,13 @@ namespace ItalyStrap\HTML;
 
 interface TagInterface {
 
+	const DIV = 'div';
+	const SPAN = 'span';
+	const P = 'p';
+	const A = 'a';
+	const LABEL = 'label';
+	const LEGEND = 'legend';
+
 	/**
 	 * @param string $context
 	 * @param string $tag

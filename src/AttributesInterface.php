@@ -5,6 +5,14 @@ namespace ItalyStrap\HTML;
 
 interface AttributesInterface {
 
+	const ID = 'id';
+	const CLASS_NAME = 'class';
+	const STYLE = 'style';
+	const TITLE = 'title';
+	const TYPE = 'type';
+	const VALUE = 'value';
+	const PLACEHOLDER = 'placeholder';
+
 	/**
 	 * @param string $context
 	 * @param array $attr
