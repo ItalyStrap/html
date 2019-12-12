@@ -94,7 +94,7 @@ class Attributes implements AttributesInterface {
 		return \array_reduce( \array_keys( $attr ), function ( $html, $key ) use ( $attr ) {
 
 			if ( empty( $attr[ $key ] ) ) {
-				return '';
+				return $html;
 			}
 
 			if ( true === $attr[ $key ] ) {
