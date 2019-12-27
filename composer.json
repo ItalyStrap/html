@@ -1,7 +1,7 @@
 {
     "name": "italystrap/html",
     "description": "HTML tag and attributes generator in PHP",
-    "type": "wordpress-plugin",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -32,6 +32,9 @@
         "psr-4": {
             "ItalyStrap\\HTML\\": "src"
         }
+    },
+    "suggest": {
+        "widoz/bem": "BEM library - Take advantage of the bem syntax throught an object"
     },
     "scripts": {
         "check": [

@@ -7,6 +7,7 @@ notifications:
 
 php:
   - '7.2'
+  - nightly
 
 matrix:
   fast_finish: true
@@ -64,7 +65,7 @@ before_install:
   - export PATH=vendor/bin:$PATH
 
 install:
-  - composer install --prefer-dist
+  - composer install --prefer-dist --ignore-platform-reqs
   # install WordPress
   - cd $WP_FOLDER
   - wp core download --version=$WP_VERSION

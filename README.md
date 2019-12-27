@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/packagist/l/italystrap/html.svg)](https://packagist.org/packages/italystrap/html)
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/italystrap/html)
 
-PHP Sanitizer and Validation OOP way
+PHP HTML handler the OOP way
 
 ## Table Of Contents
 
