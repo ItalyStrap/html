@@ -11,7 +11,7 @@ if ( ! function_exists( __NAMESPACE__ . '\get_attr' ) ) {
 	 * The contextual filter is of the form `italystrap_attr_{context}_output`.
 	 *
 	 * @param string $context The context, to build filter name.
-	 * @param array $attr Optional. Extra attributes to merge with defaults.
+	 * @param array<string|bool> $attr Optional. Extra attributes to merge with defaults.
 	 * @param bool $echo True for echoing or false for returning the value.
 	 *                            Default false.
 	 * @param null $args Optional. Extra arguments in case is needed.
@@ -45,18 +45,19 @@ if ( ! function_exists( __NAMESPACE__ . '\get_attr_e' ) ) {
 	 * @see In general-function on the plugin.
 	 *
 	 * @param  string $context    The context, to build filter name.
-	 * @param  array  $attr Optional. Extra attributes to merge with defaults.
+	 * @param  array<string|bool>  $attr Optional. Extra attributes to merge with defaults.
 	 * @param  null   $args       Optional. Extra arguments in case is needed.
 	 */
-	function get_attr_e( string $context, array $attr = [], $args = null ) {
+	function get_attr_e( string $context, array $attr = [], $args = null ):void {
 		echo get_attr( $context, $attr, false, $args );
 	}
 }
 
-/**
- * @return Tag
- */
 if ( ! \function_exists( __NAMESPACE__ . '\tag' ) ) {
+
+	/**
+	 * @return Tag
+	 */
 	function tag(): Tag {
 
 		static $tag = null;
@@ -69,69 +70,73 @@ if ( ! \function_exists( __NAMESPACE__ . '\tag' ) ) {
 	}
 }
 
-/**
- * @param string $context
- * @param string $tag
- * @param array $attr
- * @param bool $is_void
- * @return string
- */
 if ( ! \function_exists( __NAMESPACE__ . '\open_tag' ) ) {
+
+	/**
+	 * @param string $context
+	 * @param string $tag
+	 * @param array<string|bool> $attr
+	 * @return string
+	 */
 	function open_tag( string $context, string $tag, array $attr = [] ) : string {
 		return tag()->open( ...\func_get_args() );
 	}
 }
 
-/**
- * @param string $context
- * @param string $tag
- * @param array $attr
- * @param bool $is_void
- */
 if ( ! \function_exists( __NAMESPACE__ . '\open_tag_e' ) ) {
-	function open_tag_e( string $context, string $tag, array $attr = [] ) {
+
+	/**
+	 * @param string $context
+	 * @param string $tag
+	 * @param array<string|bool> $attr
+	 */
+	function open_tag_e( string $context, string $tag, array $attr = [] ): void {
 		echo tag()->open( ...\func_get_args() );
 	}
 }
 
-/**
- * @param string $context
- * @return string
- */
 if ( ! \function_exists( __NAMESPACE__ . '\close_tag' ) ) {
+
+	/**
+	 * @param string $context
+	 * @return string
+	 */
 	function close_tag( string $context ) : string {
 		return tag()->close( $context );
 	}
 }
 
-/**
- * @param string $context
- */
 if ( ! \function_exists( __NAMESPACE__ . '\close_tag_e' ) ) {
-	function close_tag_e( string $context ) {
+
+	/**
+	 * @param string $context
+	 */
+	function close_tag_e( string $context ): void {
 		echo tag()->close( $context );
 	}
 }
 
-/**
- * @param string $context
- * @param string $tag
- * @param array $attr
- * @return string
- */
 if ( ! \function_exists( __NAMESPACE__ . '\void_tag' ) ) {
+
+	/**
+	 * @param string $context
+	 * @param string $tag
+	 * @param array<string|bool> $attr
+	 * @return string
+	 */
 	function void_tag( string $context, string $tag, array $attr = [] ) : string {
 		return tag()->void( ...\func_get_args() );
 	}
 }
 
-/**
- * @param string $context
- * @param string $tag
- * @param array $attr
- */
 if ( ! \function_exists( __NAMESPACE__ . '\void_tag_e' ) ) {
-	function void_tag_e( string $context, string $tag, array $attr = [] ) {
+
+	/**
+	 * @param string $context
+	 * @param string $tag
+	 * @param array<string|bool> $attr
+	 */
+	function void_tag_e( string $context, string $tag, array $attr = [] ): void {
 		echo tag()->void( ...\func_get_args() );
 	}
 }

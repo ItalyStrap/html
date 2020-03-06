@@ -10,14 +10,14 @@ namespace ItalyStrap\HTML;
 class Attributes implements AttributesInterface {
 
 	/**
-	 * @var array
+	 * @var array<array>
 	 */
 	private $attributes = [];
 
 	/**
 	 * @inheritDoc
 	 */
-	public function add( string $context, array $attr ): Attributes {
+	public function add( string $context, array $attr ): AttributesInterface {
 		$this->attributes[ $context ] = $attr;
 		return $this;
 	}
@@ -25,7 +25,7 @@ class Attributes implements AttributesInterface {
 	/**
 	 * @inheritDoc
 	 */
-	public function get( string $context ) {
+	public function get( string $context ): array {
 		return $this->attributes[ $context ];
 	}
 
@@ -52,11 +52,11 @@ class Attributes implements AttributesInterface {
 		/**
 		 * This filters the array with html attributes.
 		 *
-		 * @param  array  $attr    The array with all HTML attributes to render.
+		 * @param  array<string|bool>  $attr    The array with all HTML attributes to render.
 		 * @param  string $context The context in wich this functionis called.
 		 * @param  null   $args    Optional. Extra arguments in case is needed.
 		 *
-		 * @var array
+		 * @var array<string|bool> $attr
 		 */
 		$attr = (array) \apply_filters( "italystrap_{$context}_attr", $this->get( $context ), $context, $args );
 
@@ -64,7 +64,7 @@ class Attributes implements AttributesInterface {
 		 * This filters the output of the html attributes.
 		 *
 		 * @param  string $html    The HTML attr output.
-		 * @param  array  $attr    The array with all HTML attributes to render.
+		 * @param  array<string|bool>  $attr    The array with all HTML attributes to render.
 		 * @param  string $context The context in wich this functionis called.
 		 * @param  null   $args    Optional. Extra arguments in case is needed.
 		 *
@@ -83,7 +83,7 @@ class Attributes implements AttributesInterface {
 	}
 
 	/**
-	 * @param array $attr
+	 * @param array<string|bool> $attr
 	 * @return string
 	 */
 	private function generateValidHtml( array $attr ): string {

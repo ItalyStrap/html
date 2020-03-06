@@ -15,7 +15,7 @@ interface TagInterface {
 	/**
 	 * @param string $context
 	 * @param string $tag
-	 * @param array $attr
+	 * @param array<string|bool> $attr
 	 * @param bool $is_void
 	 * @return string
 	 */
@@ -30,7 +30,7 @@ interface TagInterface {
 	/**
 	 * @param string $context
 	 * @param string $tag
-	 * @param array $attr
+	 * @param array<string|bool> $attr
 	 * @return string
 	 */
 	public function void( string $context, string $tag, array $attr = [] ): string;

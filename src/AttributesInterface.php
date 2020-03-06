@@ -15,14 +15,14 @@ interface AttributesInterface {
 
 	/**
 	 * @param string $context
-	 * @param array $attr
-	 * @return self
+	 * @param array<string|bool> $attr
+	 * @return AttributesInterface
 	 */
 	public function add( string $context, array $attr );
 
 	/**
 	 * @param string $context
-	 * @return mixed
+	 * @return array<string|bool>
 	 */
 	public function get( string $context );
 
@@ -34,7 +34,7 @@ interface AttributesInterface {
 
 	/**
 	 * @param string $context
-	 * @return self
+	 * @return AttributesInterface
 	 */
 	public function remove( string $context );
 

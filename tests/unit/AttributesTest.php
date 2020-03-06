@@ -1,40 +1,57 @@
-<?php 
-class AttributesTest extends \Codeception\Test\Unit
-{
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-    
-    protected function _before()
-    {
-		\tad\FunctionMockerLe\define( 'apply_filters', function ( $filtername, $value ) { return $value; } );
-		\tad\FunctionMockerLe\define( 'esc_attr', function ( $value ) { return $value; } );
-		\tad\FunctionMockerLe\define( 'esc_html', function ( $value ) { return $value; } );
-    }
+<?php
+declare(strict_types=1);
 
-    protected function _after()
-    {
-    }
+namespace ItalyStrap\Tests;
+
+use Codeception\Test\Unit;
+use ItalyStrap\HTML\Attributes;
+use ItalyStrap\HTML\AttributesInterface;
+use UnitTester;
+
+class AttributesTest extends Unit {
+
+	/**
+	 * @var UnitTester
+	 */
+	protected $tester;
+	// phpcs:ignore
+	protected function _before() {
+		// phpcs:ignore
+		\tad\FunctionMockerLe\define( 'apply_filters', function ( $filtername, $value ) {
+			return $value;
+		} );
+		// phpcs:ignore
+		\tad\FunctionMockerLe\define( 'esc_attr', function ( $value ) {
+			return $value;
+		} );
+		// phpcs:ignore
+		\tad\FunctionMockerLe\define( 'esc_html', function ( $value ) {
+			return $value;
+		} );
+	}
+
+	// phpcs:ignore
+	protected function _after() {
+	}
 
 	private function getInstance() {
-		$sut = new ItalyStrap\HTML\Attributes();
-		$this->assertInstanceOf( ItalyStrap\HTML\AttributesInterface::class, $sut );
-		$this->assertInstanceOf( ItalyStrap\HTML\Attributes::class, $sut );
+		$sut = new Attributes();
+		$this->assertInstanceOf( AttributesInterface::class, $sut );
+		$this->assertInstanceOf( Attributes::class, $sut );
 		return $sut;
 	}
 
 	/**
 	 * @test
 	 */
-	public function ItShouldBeInstantiable() {
+	public function itShouldBeInstantiable() {
 		$this->getInstance();
 	}
 
 	/**
 	 * @test
 	 */
-	public function ItShouldAddAttributes() {
+	public function itShouldAddAttributes() {
 		$sut = $this->getInstance();
 		$sut->add( 'test', [
 			'class'	=> 'color-primary',
@@ -47,7 +64,7 @@ class AttributesTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-	public function ItShouldGetAttributes() {
+	public function itShouldGetAttributes() {
 		$sut = $this->getInstance();
 
 		$attr = [
@@ -57,13 +74,13 @@ class AttributesTest extends \Codeception\Test\Unit
 
 		$sut->add( 'test', $attr );
 
-		$this->assertEquals( $attr , $sut->get( 'test' ), '' );
+		$this->assertEquals( $attr, $sut->get( 'test' ), '' );
 	}
 
 	/**
 	 * @test
 	 */
-	public function ItShouldRemoveAttributes() {
+	public function itShouldRemoveAttributes() {
 		$sut = $this->getInstance();
 
 		$attr = [
@@ -80,7 +97,7 @@ class AttributesTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-	public function ItShouldRenderTheGivenAttributes() {
+	public function itShouldRenderTheGivenAttributes() {
 		$sut = $this->getInstance();
 		$sut->add( 'test', [
 			'class'	=> 'color-primary',
@@ -94,7 +111,7 @@ class AttributesTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-	public function ItShouldRemoveContextAfterRenderTheGivenAttributes() {
+	public function itShouldRemoveContextAfterRenderTheGivenAttributes() {
 		$sut = $this->getInstance();
 		$sut->add( 'test', [
 			'class'	=> 'color-primary',
@@ -109,7 +126,7 @@ class AttributesTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-	public function ItShouldRemoveAttributeIfValueIsEmpty() {
+	public function itShouldRemoveAttributeIfValueIsEmpty() {
 		$sut = $this->getInstance();
 		$sut->add( 'test-with-key-value-first', [
 
@@ -138,7 +155,7 @@ class AttributesTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-	public function ItShouldRenderAttributeWithNoValueIfAtributeIsTrue() {
+	public function itShouldRenderAttributeWithNoValueIfAtributeIsTrue() {
 		$sut = $this->getInstance();
 		$sut->add( 'test', [
 			'class'	=> 'color-primary',
@@ -153,7 +170,7 @@ class AttributesTest extends \Codeception\Test\Unit
 	/**
 	 * @test
 	 */
-	public function ItShouldReturnEmptyStringIfNoAttributedAreGiven() {
+	public function itShouldReturnEmptyStringIfNoAttributedAreGiven() {
 		$sut = $this->getInstance();
 		$sut->add( 'test', [] );
 

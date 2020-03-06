@@ -30,9 +30,9 @@ composer require italystrap/html
 ### Attributes Class
 
 ```php
-use ItalyStrap\HTML\Attributes;
+use ItalyStrap\HTML\AttributesInterface;
 
-$sut = new Attributes();
+$sut = new AttributesInterface();
 
 $sut->add( 'context', [
     'class'	=> 'color-primary',
@@ -120,10 +120,10 @@ $this->expectOutputString( '<div class="btn-primary">Content</div>' );
 ### Tag Class
 
 ```php
-use ItalyStrap\HTML\{Tag,Attributes};
+use ItalyStrap\HTML\{Tag,AttributesInterface};
 
 Tag::$is_debug = true; // This will print comment <! some comment> around the output for debugging, you can see it with ctrl + u key in the browser
-$sut = new Tag( new Attributes() );
+$sut = new Tag( new AttributesInterface() );
 
 // <div class="someClass">Some content inside HTML div tags</div>
 echo $sut->open( 'some_context', 'div', [ 'class' => 'someClass' ] );
@@ -137,7 +137,7 @@ echo $sut->void( 'some_other_context', 'input', [ 'type' => 'text' ] );
 ### Filters
 
 ```php
-use ItalyStrap\HTML\{Tag,Attributes};
+use ItalyStrap\HTML\{Tag,AttributesInterface};
 
 $context = 'some_context';
 
@@ -147,7 +147,7 @@ $context = 'some_context';
     return $new_tag;
 }, 10, 3);
 
-$sut = new Tag( new Attributes() );
+$sut = new Tag( new AttributesInterface() );
 echo $sut->open( 'some_context', 'div', [ 'class' => 'someClass' ] );
 echo 'Some content inside HTML div tags';
 echo $sut->close( 'some_context' );

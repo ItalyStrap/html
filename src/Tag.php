@@ -13,25 +13,28 @@ namespace ItalyStrap\HTML;
  */
 class Tag implements TagInterface {
 
+	/**
+	 * @var bool $is_debug
+	 */
 	public static $is_debug = false;
 
 	/**
 	 * Array with tags indexed by $context.
 	 *
-	 * @var array
+	 * @var array<string>
 	 */
 	private $tags = [];
 
 	/**
-	 * @var Attributes
+	 * @var AttributesInterface
 	 */
 	private $attr;
 
 	/**
 	 * Tag constructor.
-	 * @param Attributes $attributes
+	 * @param AttributesInterface $attributes
 	 */
-	public function __construct( Attributes $attributes ) {
+	public function __construct( AttributesInterface $attributes ) {
 		$this->attr = $attributes;
 	}
 
@@ -43,8 +46,6 @@ class Tag implements TagInterface {
 		try {
 			$this->setTag( $context, $tag );
 		} catch ( \RuntimeException $e ) {
-			echo $e->getMessage();
-		} catch ( \Exception $e ) {
 			echo $e->getMessage();
 		}
 
@@ -109,7 +110,7 @@ class Tag implements TagInterface {
 	/**
 	 * @param string $context
 	 * @param string $tag
-	 * @param array $attr
+	 * @param array<string|bool> $attr
 	 * @param string $content
 	 * @return string
 	 * @example :
@@ -120,24 +121,24 @@ class Tag implements TagInterface {
 	 * @todo Maybe future development
 	 *
 	 */
-	private function element( string $context, string $tag, array $attr, string $content = '' ): string {
-
-		/**
-		 * @todo Può essere utile un fitro qui?
-		 */
-		$content = (string) \apply_filters( "italystrap_{$context}_element_content", $content, $context, $this );
-
-		/**
-		 * It could be used to display the content without the wrapper
-		 */
-		if ( (bool) \apply_filters( "italystrap_pre_{$context}", false, $context, $this ) ) {
-			return $content;
-		}
-
-		$output = $this->open( $context, $tag, $attr ) . $content . $this->close( $context );
-
-		return (string) \apply_filters( "italystrap_{$context}_element_output", $output, $context, $this );
-	}
+//	private function element( string $context, string $tag, array $attr, string $content = '' ): string {
+//
+//		/**
+//		 * @todo Può essere utile un fitro qui?
+//		 */
+//		$content = (string) \apply_filters( "italystrap_{$context}_element_content", $content, $context, $this );
+//
+//		/**
+//		 * It could be used to display the content without the wrapper
+//		 */
+//		if ( (bool) \apply_filters( "italystrap_pre_{$context}", false, $context, $this ) ) {
+//			return $content;
+//		}
+//
+//		$output = $this->open( $context, $tag, $attr ) . $content . $this->close( $context );
+//
+//		return (string) \apply_filters( "italystrap_{$context}_element_output", $output, $context, $this );
+//	}
 
 	/**
 	 * @param string $context
@@ -189,10 +190,10 @@ class Tag implements TagInterface {
 	 * @param string $new_tag
 	 * @return $this
 	 */
-	private function changeTag( string $context, string $new_tag ): Tag {
-		$this->tags[ $context] = $new_tag;
-		return $this;
-	}
+//	private function changeTag( string $context, string $new_tag ): Tag {
+//		$this->tags[ $context] = $new_tag;
+//		return $this;
+//	}
 
 	/**
 	 * @param string $name
@@ -229,7 +230,7 @@ class Tag implements TagInterface {
 	/**
 	 * @throws \Exception
 	 */
-	private function checkNonClosedTags() {
+	private function checkNonClosedTags(): void {
 
 		try {
 			if ( \count( $this->tags ) > 0 ) {
@@ -241,14 +242,11 @@ class Tag implements TagInterface {
 		} catch ( \RuntimeException $e ) {
 			echo $e->getMessage();
 //			throw $e;
-		} catch ( \Exception $e ) {
-			echo $e->getMessage();
-//			throw $e;
 		}
 	}
 
 	/**
-	 * @return array
+	 * @return array<string>
 	 */
 	private function getMissedCloseTags() : array {
 		$output = [];
