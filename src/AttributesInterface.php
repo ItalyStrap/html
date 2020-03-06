@@ -16,7 +16,7 @@ interface AttributesInterface {
 	/**
 	 * @param string $context
 	 * @param array $attr
-	 * @return $this
+	 * @return self
 	 */
 	public function add( string $context, array $attr );
 
@@ -44,7 +44,7 @@ interface AttributesInterface {
 	 * The contextual filter is of the form `italystrap_attr_{context}_output`.
 	 *
 	 * @param  string $context The context, to build filter name.
-	 * @param  null   $args    Optional. Extra arguments in case is needed.
+	 * @param  mixed  $args    Optional. Extra arguments in case is needed.
 	 * @return string          String of HTML attributes and values.
 	 */
 	public function render( string $context, $args = null ): string;
